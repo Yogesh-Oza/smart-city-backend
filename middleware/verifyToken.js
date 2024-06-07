@@ -3,12 +3,13 @@ import jwt from "jsonwebtoken";
 // verifing token
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.token;
+  console.log({ token });
   //check if token is exists
   if (!token) {
-    if (reNewToken(req, res)) {
-      next();
-    }
-    // res.send({ message: "please login again" });
+    // if (reNewToken(req, res)) {
+    //   next();
+    // }
+    res.send({ message: "please login again" });
   } else {
     jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
       if (err) return res.status(403).json({ message: "Token is not Valid!" });

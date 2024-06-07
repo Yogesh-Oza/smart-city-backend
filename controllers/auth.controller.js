@@ -86,11 +86,13 @@ export const login = async (req, res) => {
       .cookie("token", token, {
         httpOnly: false,
         secure: true,
-        expire: 20000 + Date.now(),
+        expire: "20h" + Date.now(),
       })
-      .cookie("refreshtoken", refreshToken)
+      // .cookie("refreshtoken", refreshToken)
       .status(200)
       .json(userInfo);
+
+    console.log({ token });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to login!" });
