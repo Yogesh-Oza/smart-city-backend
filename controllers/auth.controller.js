@@ -84,9 +84,9 @@ export const login = async (req, res) => {
 
     res
       .cookie("token", token, {
-        httpOnly: false,
-        secure: true,
-        expire: "20h" + Date.now(),
+        // httpOnly: false,
+        // secure: true,
+        expire: "20h",
       })
       // .cookie("refreshtoken", refreshToken)
       .status(200)
