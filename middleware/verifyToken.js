@@ -5,7 +5,7 @@ export const verifyToken = (req, res, next) => {
   const token = req.cookies.token;
   console.log({ token });
   //check if token is exists
-  if (token) {
+  if (!token) {
     // if (reNewToken(req, res)) {
     //   next();
     // }
