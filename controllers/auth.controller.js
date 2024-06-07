@@ -84,11 +84,11 @@ export const login = async (req, res) => {
 
     res
       .cookie("token", token, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
-        expire: "10h" + Date.now(),
+        expire: 20000 + Date.now(),
       })
-      // .cookie("refreshtoken", refreshToken)
+      .cookie("refreshtoken", refreshToken)
       .status(200)
       .json(userInfo);
   } catch (err) {
